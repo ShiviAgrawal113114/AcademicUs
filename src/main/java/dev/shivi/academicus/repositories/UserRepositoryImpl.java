@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 public class UserRepositoryImpl implements UserRepository{
@@ -21,5 +23,22 @@ public class UserRepositoryImpl implements UserRepository{
         User createdUser = new User(user.getName(), user.getGender());
         userDatabase.add(createdUser);
         return createdUser;
+    }
+
+    @Override
+    public Optional<User> getUserById(UUID uuid) {
+//        for( User u : userDatabase )
+//        {
+//            if(u.getUuid() == uuid)
+//                return u;
+//        }
+//        return null;
+
+        Optional<User> foundUser = userDatabase
+                .stream()
+                .filter(
+                        user -> user.getUuid().equals(uuid)
+                ).findFirst();
+        return foundUser;
     }
 }
