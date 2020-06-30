@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Repository("InMemory")
-public class UserRepositoryImpl implements UserRepository{
+@Repository("postgres")
+public class UserRepositoryPostgresImpl implements UserRepository{
 
     private List<User>  userDatabase = new ArrayList<>();
 

@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "userRepository.type",
+      "type": "java.lang.String",
+      "description": "Description for userRepository.type."
+  }
+] }

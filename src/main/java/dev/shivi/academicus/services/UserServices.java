@@ -3,6 +3,8 @@ package dev.shivi.academicus.services;
 import dev.shivi.academicus.models.User;
 import dev.shivi.academicus.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -14,8 +16,11 @@ public class UserServices {
 
     private UserRepository userRepository;
 
+    @Value("${userRepository.type}")
+    private String userRepoType;
+
     @Autowired
-    UserServices(UserRepository userRepository)
+    UserServices(@Qualifier("postgres") UserRepository userRepository)
     {
         this.userRepository = userRepository;
     }
